@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import java.util.UUID;
+
 public class MainActivity extends AppCompatActivity {
 
     SharedPreferences prefs;
@@ -22,8 +24,15 @@ public class MainActivity extends AppCompatActivity {
         //shpred.putInt();
         //shpred.commit()
         //prefs.getInt()
-
-
-
+        //UUID codlogin = UUID.randomUUID();
+        int UserLogged = prefs.getInt("UsuarioIdentificado", -1);
+        if(UserLogged == -1){
+            //Preparar el intent del Login
+            shpred.putInt("UsuarioIdentificado", 0);
+        }
+        else{
+            //Omitir el Login y presentar la pantalla
+            //principal
+        }
     }
 }

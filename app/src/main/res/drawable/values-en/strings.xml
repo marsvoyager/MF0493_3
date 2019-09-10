@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Forms98</string>
+    <string name="btn_si">Yes</string>
+    <string name="btn_no">No</string>
+    <string name="btBui">Empty</string>
+    <string name="btMost">Show</string>
+    <string name="lbtxName">Name</string>
+    <string name="lbtxCgName">Sec.Name</string>
+    <string name="lbtxMail">Mail</string>
+    <string name="lbtxDirWeb">Web Address</string>
+    <string name="lbtxtel">Phone</string>
+    <string name="lbtxnaix">Birthdate</string>
+    <string name="txName">Write name</string>
+    <string name="txCgName">Write second name</string>
+    <string name="txMail">Write Mail</string>
+    <string name="txWebAdd">Write Web Address</string>
+    <string name="txtel">Write Phone</string>
+    <string name="txnaix">Write your birth date</string>
+    <string name="errEmptyName">Field Name cannot be empty!</string>
+    <string name="errEmptyCgName">Field Second Name cannto be emtpy!</string>
+    <string name="errEmptyMail">Field Mail cannot be empty!</string>
+    <string name="errEmptyTelf">Field Phone cannot be empty!</string>
+    <string name="errEmptyNeix">Birthdate cannot be empty</string>
+    <string name="errEmptyDirWeb">Web Address cannot be empty</string>
+
+
+    <string name="dataErr">Fill your data correctly</string>
+    <string name="dlgEsborr">Are you sure? All data will be erased</string>
+    <string name="dataOk">Data acknowledge: Name is _NOM, E\'mail _EMAIL and account phone numerb is: _TELF</string>
+    <string name="dataOk1">Data acknowledge: Name is _NOM, Second Name is _COGNOM, web address is _ADRWEB and account phone numerb is: _TELF</string>
+    <string name="btCncl">Cancel</string>
+    <string name="btAcptr">Ok</string>
+    <string name="title_activity_show_data">ShowDataActivity</string>
+</resources>
