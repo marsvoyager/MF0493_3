@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">AndMoviRoom</string>
+    <string name="intwebadd">https://www.abc.es/play/cine/peliculas/</string>
+    <string name="intwebaddhint">Clica per accedir-hi</string>
     <string name="btn_si">Si</string>
     <string name="btn_no">No</string>
     <string name="btCncl">Cancelar</string>
     <string name="btAcptr">Aceptar</string>
+    <string name="btAccess">Accedir-hi</string>
     <string name="btBui">Esborrar</string>
     <string name="btMost">Mostrar</string>
     <string name="lbtxName">Nom</string>
@@ -12,21 +15,27 @@
     <string name="lbtxDirWeb">Adreça web</string>
     <string name="lbtxtel">Telèfon</string>
     <string name="lbtxnaix">Data Naixement</string>
+    <string name="lbtxPasswd">Contrasenya</string>
     <string name="txName">Escriu Nom</string>
     <string name="txCgName">Escriu Cognom</string>
     <string name="txMail">Escriu Mail</string>
     <string name="txWebAdd">Escriu Adreça Web</string>
     <string name="txtel">Escriu Telèfon</string>
     <string name="txnaix">Seleccionada Data de Naixement</string>
+    <string name="txLogPasswd">Escriu contrasenya</string>
+    <string name="txWebhint">Clica aqui per accedir a la Web</string>
     <string name="errEmptyName">El camp Nom no pot estar buit!</string>
     <string name="errEmptyCgName">El camp CogNom no pot estar buit!</string>
     <string name="errEmptyMail">El camp Mail no pot estar buit!</string>
+    <string name="errEmptyLogPassw">El camp Contrasenya no pot estar buit!</string>
     <string name="errEmptyTelf">El camp Telèfon no pot estar buit!</string>
     <string name="errEmptyNeix">El camp Data de Naixement no pot estar buit!</string>
     <string name="errEmptyDirWeb">El camp Adreça Web no pot estar buit</string>
     <string name="dataErr">Ompli les dades correctament</string>
+    <string name="dataErr1">E-mail i contraseny no poden ser buits!</string>
     <string name="dlgEsborr">Esteu segur que voleu esborrar les dades?</string>
     <string name="dataOk">Dades rebudes: El Nom és _NOM, l\'Email _EMAIL i el seu número de telèfon: _TELF</string>
     <string name="dataOk1">Dades rebudes: El Nom és _NOM, El Cognom és _COGNOM l\'Adreça Web _ADRWEB i el seu número de telèfon: _TELF</string>
+    <string name="dataOk2">Accéss correcte per _EMAIL</string>
     <string name="title_activity_show_data">ShowDataActivity</string>
 </resources>

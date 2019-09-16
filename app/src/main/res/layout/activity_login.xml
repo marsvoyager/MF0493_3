@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="29dp"
+    android:layout_marginRight="29dp"
+    android:orientation="vertical"
+    tools:context=".LoginActivity"
+    >
+
+    <ImageView
+        android:layout_width="345dp"
+        android:layout_height="87dp"
+        android:layout_gravity="center"
+        android:adjustViewBounds="true"
+        android:contentDescription="TODO"
+        android:scaleType="centerCrop"
+        android:src="@drawable/barcelona_team" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="29dp"
+        >
+        <TextView
+            android:id="@+id/lblogemailid"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/ic_email_black_24dp"
+            android:text="@string/lbtxMail" />
+
+        <EditText
+            android:id="@+id/etwlogemailid"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:hint="@string/txMail"
+            android:inputType="textWebEditText"
+            android:textSize="15sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="29dp"
+        >
+        <TextView
+            android:id="@+id/lblopasswid"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/ic_lock_outline_black_24dp"
+            android:text="@string/lbtxPasswd" />
+
+        <EditText
+            android:id="@+id/etlopasswid"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:hint="@string/txLogPasswd"
+            android:inputType="textWebPassword"
+            android:textSize="15sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:id="@+id/lbspaceid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textAlignment="center" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp"
+        android:orientation="vertical"
+        android:tooltipText="@string/intwebaddhint"
+        >
+        <TextView
+            android:id="@+id/lbwebaddid"
+            android:textColor="@color/colorURL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:drawableLeft="@drawable/ic_language_black_24dp"
+            android:drawableRight="@drawable/ic_language_black_24dp"
+            android:text="@string/intwebadd"
+            android:textAlignment="center"
+            android:hint="@string/txWebhint"
+            android:onClick="obrePelicNaveg"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center">
+
+        <Button
+            android:id="@+id/btn_loginid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:layout_weight="1"
+            android:background="#1DE9B6"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="@string/btAccess"
+            android:textSize="22sp"
+            android:onClick="doLogin"/>
+
+    </LinearLayout>
+
+</LinearLayout>
