@@ -20,7 +20,8 @@ public class CustomAdapterCeluloides
     Context context;
     ArrayList<Pelicula> celuloides;
 
-    public CustomAdapterCeluloides(Context _context, int layoutResourceId, ArrayList<Pelicula> _data) {
+    public CustomAdapterCeluloides(Context _context, int layoutResourceId,
+                                   ArrayList<Pelicula> _data) {
         super(_context, layoutResourceId, _data);
 
         this.layoutResourceId=layoutResourceId;
@@ -46,11 +47,15 @@ public class CustomAdapterCeluloides
         TextView tvpuntpelic = (TextView)row.findViewById(R.id.tvrow_celupuntid);
 
         Pelicula pelic = celuloides.get(position);
+        if( (null == pelic.getTitulo() )
+          || (null == pelic.getPuntuacion())
+        )
+                  return row;
 
         tvtitpelic.setText(pelic.getTitulo());
 
-        tvpuntpelic.setText(""+pelic.getPuntuacion().getPunt());
-        switch(pelic.getPuntuacion().getPunt()){
+        tvpuntpelic.setText(""+pelic.getPuntuacion());
+        switch(pelic.getPuntuacion()){
             case 0:
                 case 1:
                     tvpuntpelic.setTextColor(context.getResources().getColor(R.color.colorpunt1));

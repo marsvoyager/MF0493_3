@@ -77,6 +77,7 @@ public class ListViewHandler_TCeluloides
 
             pintent.putExtra("peliculaindex", position);
             pintent.putExtra("peliculauuid", p.getId());
+            pintent.putExtra("modoEdicion", true);
             /*pintent.putExtra("peliculatitulo", p.getTitulo());
             pintent.putExtra("peliculadesc", p.getDescripcion());
             pintent.putExtra("peliculaany", p.getAnyo_public());

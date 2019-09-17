@@ -7,9 +7,10 @@ import androidx.room.PrimaryKey;
 
 import java.util.UUID;
 
-@Entity(tableName="peliculas")
+@Entity(tableName="pelicula")
 public class Pelicula {
 
+    //NOT USED!!
     public enum emPuntuacion
     {_0(0), _1(1), _2(2), _3(3), _4(4),
         _5(5),
@@ -23,6 +24,13 @@ public class Pelicula {
         public int getPunt() {
             return punt;
         }
+
+        @Override
+        public String toString() {
+            //return super.toString();
+            return ""+punt;
+        }
+
     };
 
 
@@ -40,7 +48,8 @@ public class Pelicula {
     private String anyo_public;
 
     @ColumnInfo(name = "puntuacio")
-    private emPuntuacion puntuacion;
+    private Integer puntuacion;
+    //private emPuntuacion empuntuacion;
 
     @ColumnInfo(name = "img_url")
     private String imagenUrl;
@@ -79,11 +88,19 @@ public class Pelicula {
         this.anyo_public = anyo_public;
     }
 
-    public emPuntuacion getPuntuacion() {
+    /*public emPuntuacion getPuntuacion() {
         return puntuacion;
     }
 
     public void setPuntuacion(emPuntuacion puntuacion) {
+        this.puntuacion = puntuacion;
+    }*/
+
+    public Integer getPuntuacion() {
+        return puntuacion;
+    }
+
+    public void setPuntuacion(Integer puntuacion) {
         this.puntuacion = puntuacion;
     }
 
@@ -99,12 +116,19 @@ public class Pelicula {
 
     }
 
-    public Pelicula(String titu, String desc, int i, emPuntuacion emPuntuacion, String simgurl) {
+    public Pelicula() {
+        this.id=UUID.randomUUID().toString();
+    }
+    public Pelicula(String titu, String desc,
+                    String anyp, emPuntuacion emPuntuacion,
+                    String simgurl) {
         this.id= UUID.randomUUID().toString();
         this.titulo=titu;
         this.descripcion=desc;
-        this.puntuacion = emPuntuacion;
+        this.anyo_public=anyp;
+        this.puntuacion = emPuntuacion.getPunt();
         this.imagenUrl = simgurl;
     }
+
 
 }

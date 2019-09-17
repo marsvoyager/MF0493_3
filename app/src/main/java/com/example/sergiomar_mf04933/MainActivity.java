@@ -4,18 +4,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ListView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sergiomar_mf04933.adapter.CustomAdapterCeluloides;
+import com.example.sergiomar_mf04933.controller.PeliculaController;
 import com.example.sergiomar_mf04933.handlers.ListViewHandler_TCeluloides;
 import com.example.sergiomar_mf04933.helper.HelperFactory;
 import com.example.sergiomar_mf04933.helper.ICallback;
 import com.example.sergiomar_mf04933.model.Pelicula;
-import com.example.sergiomar_mf04933.model.PeliculaDetalle;
 
 import java.util.ArrayList;
 
@@ -56,11 +58,44 @@ public class MainActivity
     };
 
     SharedPreferences prefs;
+    CustomAdapterCeluloides lv_adpCelulod;
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //return super.onCreateOptionsMenu(menu);
+
+        // Inflate the menu; this adds items to the action bar
+        //if it is present.
+        getMenuInflater().inflate(R.menu.crud, menu);
+
+        return true;
+    }
+
+
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+        Log.v("Proves", "onResume");
+
+        //MEMO.clear();
+        //MEMO.addAll(ncontroller.getNotas());
+        //NotalvAdapter.notifyDataSetChanged();
+        lv_adpCelulod.getCeluloides().clear();
+        lv_adpCelulod.getCeluloides().addAll(
+                PeliculaController.get(this)
+                        .getPeliculas());
+
+        lv_adpCelulod.notifyDataSetChanged();
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         prefs = getSharedPreferences("PreferenciasApp", Context.MODE_PRIVATE);
         SharedPreferences.Editor shpred =  prefs.edit();
@@ -80,19 +115,25 @@ public class MainActivity
             ArrayList<Pelicula> lceluloides= new ArrayList<Pelicula>();
             PeliculasLVClickCb pclick =new PeliculasLVClickCb(this);
 
-            ListViewHandler_TCeluloides lvh = new ListViewHandler_TCeluloides(lceluloides,
+            ListViewHandler_TCeluloides lvh = new ListViewHandler_TCeluloides(
+                    lceluloides,
                     (ListView) findViewById(R.id.lvceluloidesid),
                     new ListViewHandler_TCeluloides.callBackItemClick(
                             lceluloides, pclick, pclick.getIntPelicDetalle())
             );
 
             //
-            CustomAdapterCeluloides lv_adpCelulod = new CustomAdapterCeluloides(
+            lv_adpCelulod = new CustomAdapterCeluloides(
                     this, R.layout.row_celuloides,
                     lvh.getLceluloides()
             );
             //and autoset de Listview! inside
             lvh.setLv_adpCelulod(lv_adpCelulod);
+
+            lv_adpCelulod.getCeluloides().clear();
+            lv_adpCelulod.getCeluloides().addAll(
+                    PeliculaController.get(this)
+                            .getPeliculas());
 
             lv_adpCelulod.notifyDataSetChanged();
 
@@ -108,127 +149,14 @@ public class MainActivity
             //Testing a filled list
             //Testing a filled list  DELETE!!!!!!!!!
 
-            lvh.getLceluloides().add(
+            /*lvh.getLceluloides().add(
                     new Pelicula(
                             "DATOPRUEBALa vida es bella",
                             "Un clásico de Oscar",
-                            1999,
+                            "1999",
                             Pelicula.emPuntuacion._0,
                             "https://i.imgur.com/psiUtWd.png"
-                    ));
-            lvh.getLceluloides().add(
-                    new Pelicula(
-                            "DATOPRUEBALa vida es bella",
-                            "Un clásico de Oscar",
-                            1999,
-                            Pelicula.emPuntuacion._1,
-                            "https://i.imgur.com/psiUtWd.png"
-                    ));
-            lvh.getLceluloides().add(
-                    new Pelicula(
-                            "DATOPRUEBALa vida es bella",
-                            "Un clásico de Oscar",
-                            1999,
-                            Pelicula.emPuntuacion._2,
-                            "https://i.imgur.com/psiUtWd.png"
-                    ));
-            lvh.getLceluloides().add(
-                    new Pelicula(
-                            "DATOPRUEBALa vida es bella",
-                            "Un clásico de Oscar",
-                            1999,
-                            Pelicula.emPuntuacion._3,
-                            "https://i.imgur.com/psiUtWd.png"
-                    ));
-            lvh.getLceluloides().add(
-                    new Pelicula(
-                            "DATOPRUEBALa vida es bella",
-                            "Un clásico de Oscar",
-                            1999,
-                            Pelicula.emPuntuacion._4,
-                            "https://i.imgur.com/psiUtWd.png"
-                    ));
-            lvh.getLceluloides().add(
-                    new Pelicula(
-                            "DATOPRUEBALa vida es bella",
-                            "Un clásico de Oscar",
-                            1999,
-                            Pelicula.emPuntuacion._5,
-                            "https://i.imgur.com/psiUtWd.png"
-                    ));
-            lvh.getLceluloides().add(
-                    new Pelicula(
-                            "DATOPRUEBALa vida es bella",
-                            "Un clásico de Oscar",
-                            1999,
-                            Pelicula.emPuntuacion._5,
-                            "https://i.imgur.com/psiUtWd.png"
-                    ));
-            lvh.getLceluloides().add(
-                    new Pelicula(
-                            "DATOPRUEBALa vida es bella",
-                            "Un clásico de Oscar",
-                            1999,
-                            Pelicula.emPuntuacion._5,
-                            "https://i.imgur.com/psiUtWd.png"
-                    ));
-            lvh.getLceluloides().add(
-                    new Pelicula(
-                            "DATOPRUEBALa vida es bella",
-                            "Un clásico de Oscar",
-                            1999,
-                            Pelicula.emPuntuacion._5,
-                            "https://i.imgur.com/psiUtWd.png"
-                    ));
-            lvh.getLceluloides().add(
-                    new Pelicula(
-                            "DATOPRUEBALa vida es bella",
-                            "Un clásico de Oscar",
-                            1999,
-                            Pelicula.emPuntuacion._5,
-                            "https://i.imgur.com/psiUtWd.png"
-                    ));
-            lvh.getLceluloides().add(
-                    new Pelicula(
-                            "DATOPRUEBALa vida es bella",
-                            "Un clásico de Oscar",
-                            1999,
-                            Pelicula.emPuntuacion._5,
-                            "https://i.imgur.com/psiUtWd.png"
-                    ));
-            lvh.getLceluloides().add(
-                    new Pelicula(
-                            "DATOPRUEBALa vida es bella",
-                            "Un clásico de Oscar",
-                            1999,
-                            Pelicula.emPuntuacion._5,
-                            "https://i.imgur.com/psiUtWd.png"
-                    ));
-            lvh.getLceluloides().add(
-                    new Pelicula(
-                            "DATOPRUEBALa vida es bella",
-                            "Un clásico de Oscar",
-                            1999,
-                            Pelicula.emPuntuacion._5,
-                            "https://i.imgur.com/psiUtWd.png"
-                    ));
-            lvh.getLceluloides().add(
-                    new Pelicula(
-                            "DATOPRUEBALa vida es bella",
-                            "Un clásico de Oscar",
-                            1999,
-                            Pelicula.emPuntuacion._5,
-                            "https://i.imgur.com/psiUtWd.png"
-                    ));
-            lvh.getLceluloides().add(
-                    new Pelicula(
-                            "DATOPRUEBALa vida es bella",
-                            "Un clásico de Oscar",
-                            1999,
-                            Pelicula.emPuntuacion._5,
-                            "https://i.imgur.com/psiUtWd.png"
-                    ));
-            lv_adpCelulod.notifyDataSetChanged();
+                    ));*/
 
 
         }
@@ -245,4 +173,37 @@ public class MainActivity
         //startActivity(intent);
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        //finish();
+        //return true;
+        return super.onSupportNavigateUp();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nuev_pelicid:
+                Intent IntPelicDetalle = new Intent(this,
+                        PeliculaDetalle.class);
+
+                IntPelicDetalle.putExtra("modoEdicion", true);
+                this.startActivity(IntPelicDetalle);
+
+                break;
+
+         /*   case R.id.item1:
+
+                Toast.makeText(getApplicationContext(), "item1",
+                        Toast.LENGTH_LONG).show();
+
+                return (true);
+
+            case R.id.item2:
+
+                Toast.makeText(getApplicationContext(), "item2",
+                        Toast.LENGTH_LONG).show();*/
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
