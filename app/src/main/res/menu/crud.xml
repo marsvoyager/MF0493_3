@@ -4,6 +4,7 @@
     <item
         android:id="@+id/nuev_pelicid"
         android:icon="@android:drawable/ic_menu_add"
-        android:title="Afegir Estrena"
+        android:title="@string/menu_crudadd"
         />
+
 </menu>

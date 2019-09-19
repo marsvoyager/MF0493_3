@@ -68,6 +68,7 @@ public class MainActivity
         // Inflate the menu; this adds items to the action bar
         //if it is present.
         getMenuInflater().inflate(R.menu.crud, menu);
+        getMenuInflater().inflate(R.menu.inspir, menu);
 
         return true;
     }
@@ -77,7 +78,10 @@ public class MainActivity
     protected void onResume() {
 
         super.onResume();
-        Log.v("Proves", "onResume");
+        //Log.v("Proves", "onResume");
+        //al tornar de la pantalla de login encara no hem creat la bbdd
+        if(lv_adpCelulod==null)
+            return;
 
         //MEMO.clear();
         //MEMO.addAll(ncontroller.getNotas());
@@ -95,7 +99,33 @@ public class MainActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ArrayList<Pelicula> lceluloides= new ArrayList<Pelicula>();
+        PeliculasLVClickCb pclick =new PeliculasLVClickCb(this);
+        ListViewHandler_TCeluloides lvh = new ListViewHandler_TCeluloides(
+                lceluloides,
+                (ListView) findViewById(R.id.lvceluloidesid),
+                new ListViewHandler_TCeluloides.callBackItemClick(
+                        lceluloides,
+                        pclick, pclick.getIntPelicDetalle())
+        );
+
+        //
+        lv_adpCelulod = new CustomAdapterCeluloides(
+                this, R.layout.row_celuloides,
+                lvh.getLceluloides()
+        );
+        //and autoset de Listview! inside
+        lvh.setLv_adpCelulod(lv_adpCelulod);
+        lv_adpCelulod.getCeluloides().clear();
+        lv_adpCelulod.getCeluloides().addAll(
+                PeliculaController.get(this)
+                        .getPeliculas());
+
+        lv_adpCelulod.notifyDataSetChanged();
+
+
+
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         prefs = getSharedPreferences("PreferenciasApp", Context.MODE_PRIVATE);
         SharedPreferences.Editor shpred =  prefs.edit();
@@ -111,31 +141,6 @@ public class MainActivity
         else{
             //Omitir el Login y presentar la pantalla
             //principal
-
-            ArrayList<Pelicula> lceluloides= new ArrayList<Pelicula>();
-            PeliculasLVClickCb pclick =new PeliculasLVClickCb(this);
-
-            ListViewHandler_TCeluloides lvh = new ListViewHandler_TCeluloides(
-                    lceluloides,
-                    (ListView) findViewById(R.id.lvceluloidesid),
-                    new ListViewHandler_TCeluloides.callBackItemClick(
-                            lceluloides, pclick, pclick.getIntPelicDetalle())
-            );
-
-            //
-            lv_adpCelulod = new CustomAdapterCeluloides(
-                    this, R.layout.row_celuloides,
-                    lvh.getLceluloides()
-            );
-            //and autoset de Listview! inside
-            lvh.setLv_adpCelulod(lv_adpCelulod);
-
-            lv_adpCelulod.getCeluloides().clear();
-            lv_adpCelulod.getCeluloides().addAll(
-                    PeliculaController.get(this)
-                            .getPeliculas());
-
-            lv_adpCelulod.notifyDataSetChanged();
 
             //lvh.getLv_celuloides().setOnItemClickListener(
               //      new ListViewHandler_TCeluloides.callBackItemClick(pclick, pclick.getIntPelicDetalle()));
@@ -187,8 +192,16 @@ public class MainActivity
                 Intent IntPelicDetalle = new Intent(this,
                         PeliculaDetalle.class);
 
-                IntPelicDetalle.putExtra("modoEdicion", true);
+                IntPelicDetalle.putExtra("modoEdicion", false);
                 this.startActivity(IntPelicDetalle);
+
+                break;
+            case R.id.inspir_pelicid:
+                Intent IntInspiracio = new Intent(this,
+                        Inspiracio.class);
+
+                //IntPelicDetalle.putExtra("modoEdicion", true);
+                this.startActivity(IntInspiracio);
 
                 break;
 

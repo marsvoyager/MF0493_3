@@ -167,7 +167,8 @@ public class PeliculaDetalle extends AppCompatActivity {
 
     public void AnyDestButPress(View view) {
 
-        if(getIntent().getBooleanExtra("modoEdicion", false)) {
+        Boolean bDelete =getIntent().getBooleanExtra("modoEdicion", false);
+        if(bDelete) {
             int idxPelicula = getIntent().getIntExtra("peliculaindex", -1);
             List<Pelicula>
                     listp =
